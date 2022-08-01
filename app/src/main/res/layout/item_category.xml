@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="@dimen/item_category_width"
+        android:layout_height="@dimen/item_category_height"
+        android:layout_marginStart="@dimen/item_category_marginStart"
+        android:layout_marginTop="@dimen/item_category_marginTop"
+        android:orientation="vertical"
+        tools:background="@color/background_gray">
+
+        <ImageButton
+            android:id="@+id/viewShape"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_category_width"
+            android:background="@drawable/sel_bg_category"
+            android:contentDescription="@{title}"
+            android:src="@drawable/sel_ic_books"
+            tools:src="@drawable/sel_ic_books" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{title}"
+            android:textAppearance="@style/ParentText.12SP"
+            tools:text="Category" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">TestMarket</string>
+    <string name="ecommerce_c">Ecommerce \nConcept</string>
+    <string name="select_cate">Select Category</string>
+    <string name="see_more">see more</string>
+    <string name="search">Search</string>
+    <string name="buy_now">Buy now!</string>
+    <string name="New">New</string>
+    <string name="strike"><strike>$1,500</strike></string>
+    <string name="explorer">Explorer</string>
+    <string name="my_cart">My cart</string>
+    <string name="favourites">Favourites</string>
+    <string name="my_profile">My profile</string>
+    <string name="filter_options">Filter options</string>
+    <string name="done">Done</string>
+    <string name="brand">Brand</string>
+    <string name="price">Price</string>
+    <string name="size">Size</string>
+    <string name="filter">filter</string>
+    <string name="addres">Volgograd, Lenina, 50</string>
+</resources>

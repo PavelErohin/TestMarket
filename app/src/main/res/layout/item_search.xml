@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="34dp"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="36dp"
+    android:layout_marginBottom="16dp"
+    android:orientation="horizontal"
+    tools:background="@color/black">
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/search"
+            style="@style/ParentText.12SP.Search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_bar"
+            android:drawablePadding="8dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="66dp"
+            android:paddingEnd="10dp"
+            android:text="@string/search" />
+
+        <ImageButton
+            android:id="@+id/searchBtn"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="24dp"
+            android:background="@drawable/ic_search"
+            android:contentDescription="@string/search" />
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/viewShape"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/bg_orange_oval"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_qr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</LinearLayout>
