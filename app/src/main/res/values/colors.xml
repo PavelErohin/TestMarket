@@ -7,4 +7,6 @@
     <color name="orange">#FF6E4E</color>
     <color name="dark_blue">#010035</color>
     <color name="dark_blue_search">#80010035</color>
+    <color name="rating">#FFB800</color>
+    <color name="transparent">#00000000</color>
 </resources>

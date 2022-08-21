@@ -15,4 +15,11 @@
     <dimen name="item_best_margin">12dp</dimen>
     <dimen name="item_category_marginStart">20dp</dimen>
     <dimen name="item_category_marginTop">16dp</dimen>
+    <!--details dimen -->
+    <dimen name="item_details_width">266dp</dimen>
+    <dimen name="item_details_height">335dp</dimen>
+    <dimen name="item_details_hard_ware">74dp</dimen>
+    <dimen name="item_details_corner_radius">20dp</dimen>
+    <!--cart dimen -->
+    <dimen name="image_cart">88dp</dimen>
 </resources>

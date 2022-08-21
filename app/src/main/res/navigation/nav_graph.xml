@@ -12,10 +12,33 @@
         <action
             android:id="@+id/action_fragmentSplash_to_fragmentMain"
             app:destination="@id/fragmentMain"/>
+        <action
+            android:id="@+id/action_fragmentSplash_to_fragmentDetails"
+            app:destination="@id/fragmentDetails" />
+        <action
+            android:id="@+id/action_fragmentSplash_to_fragmentCart"
+            app:destination="@id/fragmentCart" />
     </fragment>
     <fragment
         android:id="@+id/fragmentMain"
         android:name="com.example.testmarket.ui.main.FragmentMain"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentDetails"
+            app:destination="@id/fragmentDetails" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentCart"
+            app:destination="@id/fragmentCart" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetails"
+        android:name="com.example.testmarket.ui.main.FragmentDetails"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/fragmentCart"
+        android:name="com.example.testmarket.ui.main.FragmentCart"
+        android:label="FragmentCart"
+        tools:layout="@layout/fragment_cart"/>
 </navigation>

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="375dp"
-    android:background="@drawable/bg_dialog"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingStart="46dp"
     android:paddingTop="24dp"
-    android:paddingEnd="31dp">
+    android:paddingEnd="31dp"
+    android:background="@drawable/bg_dialog">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageButton
+            android:id="@+id/close"
             android:layout_width="37dp"
             android:layout_height="37dp"
             android:layout_gravity="start"
@@ -27,11 +28,16 @@
             android:text="@string/filter_options"
             android:textAlignment="center" />
 
+        <ImageButton
+            android:id="@+id/done"
+            android:layout_width="86dp"
+            android:layout_height="37dp"
+            android:layout_gravity="end"
+            android:background="@drawable/ic_dialog_done" />
         <TextView
             android:layout_width="86dp"
             android:layout_height="37dp"
             android:layout_gravity="end"
-            android:background="@drawable/ic_dialog_done"
             android:gravity="center"
             android:text="@string/done" />
 
@@ -74,6 +80,7 @@
         android:id="@+id/SpinSize"
         android:layout_width="@dimen/filter_spinner_width"
         android:layout_height="@dimen/filter_spinner_height"
-        android:layout_marginTop="@dimen/filter_spinner_margin_top" />
+        android:layout_marginTop="@dimen/filter_spinner_margin_top"
+        android:layout_marginBottom="15dp"/>
 
 </LinearLayout>
