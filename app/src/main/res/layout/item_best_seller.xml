@@ -23,6 +23,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/bestView"
         android:layout_width="@dimen/item_best_width"
         android:layout_height="@dimen/item_best_height"
         android:layout_marginStart="@dimen/item_best_margin"
@@ -31,10 +32,9 @@
         tools:cardBackgroundColor="#4CAF50">
 
         <ImageView
-            android:id="@+id/IVbest"
+            android:id="@+id/imageBest"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_best_picture_height"
-            android:clickable="false"
             tools:background="@color/dark_blue" />
 
         <ImageButton

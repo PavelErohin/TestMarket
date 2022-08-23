@@ -24,7 +24,7 @@
         android:layout_marginStart="34dp"
         android:layout_marginTop="32dp"
         android:lineSpacingExtra="-5sp"
-        android:text="@string/ecommerce_c"
+        android:text="@string/ecommerce"
         android:textAppearance="@style/SplashText"
         app:layout_constraintStart_toStartOf="@id/viewShape"
         app:layout_constraintTop_toTopOf="@id/viewShape" />

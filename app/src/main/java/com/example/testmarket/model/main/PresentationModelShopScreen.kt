@@ -2,9 +2,9 @@ package com.example.testmarket.model.main
 
 import com.example.testmarket.model.base.ListItem
 
-data class PresentationModelMainScreen(
+data class PresentationModelShopScreen(
 
-  val itemMap: ItemMap = ItemMap({}),
+  val itemMap: ItemMap = ItemMap,
   val itemBlockCategory: ItemBlockView = ItemBlockView(
     title = "Select Category",
     more = "view all",

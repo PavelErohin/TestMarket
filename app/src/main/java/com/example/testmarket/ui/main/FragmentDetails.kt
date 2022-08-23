@@ -16,7 +16,6 @@ class FragmentDetails : Fragment(R.layout.fragment_details) {
 
   private val binding by viewBinding { FragmentDetailsBinding.bind(it) }
   private val viewModel by viewModel<DetailsViewModel>()
-
   private val galleryAdapter = GalleryAdapter()
   private val colorAdapter =
     ColorAdapter { colorItem -> viewModel.onColorPressed(colorItem.itemId) }
@@ -32,8 +31,11 @@ class FragmentDetails : Fragment(R.layout.fragment_details) {
         PagerSnapHelper().attachToRecyclerView(rvGallery)
 
       back.setOnClickListener { findNavController().popBackStack() }
-      rvColor.adapter = colorAdapter
+      addToCartTop.setOnClickListener { addToCart() }
+      addToCartBottom.setOnClickListener { addToCart() }
+      addToFavorites.setOnClickListener { viewModel.addToFavorites() }
 
+      rvColor.adapter = colorAdapter
       rvCapacity.adapter = capacityAdapter
 
       viewModel.dataGallery.observe(viewLifecycleOwner) {
@@ -53,11 +55,13 @@ class FragmentDetails : Fragment(R.layout.fragment_details) {
         ssd.text = it.ssd
         price.text = it.price
         ratingBar.rating = it.rating
+        addToFavorites.isSelected = it.isFavorites
       }
     }
   }
 
-  fun back() {
-    findNavController().previousBackStackEntry
+  private fun addToCart() {
+    findNavController().navigate(R.id.nav_graph_cart)
   }
+
 }

@@ -1,34 +1,53 @@
 <resources>
-    <string name="app_name">TestMarket</string>
-    <string name="ecommerce_c">Ecommerce \nConcept</string>
+    <string name="appName">TestMarket</string>
+    <string name="ecommerce">Ecommerce \nConcept</string>
     <string name="address">Volgograd, Lenina, 50</string>
-    <string name="select_cate">Select Category</string>
-    <string name="see_more">see more</string>
+    <string name="selectCategory">Select Category</string>
+    <string name="seeMore">see more</string>
     <string name="search">Search</string>
-    <string name="buy_now">Buy now!</string>
+    <string name="buyNow">Buy now!</string>
     <string name="New">New</string>
     <string name="strike"><strike>$1,500</strike></string>
-    <string name="main">Main</string>
-    <string name="my_cart">My Cart</string>
-    <string name="favourites">Favourites</string>
-    <string name="my_profile">My profile</string>
-    <string name="filter_options">Filter options</string>
-    <string name="product_details">Product Details</string>
+    <string name="filterOptions">Filter options</string>
+    <string name="productDetails">Product Details</string>
 
+    <!--Bottom menu-->
+    <string name="shopInMenu">Shop</string>
+    <string name="myCart">My Cart</string>
+    <string name="favourites">Favourites</string>
+    <string name="myProfile">My profile</string>
     <!--Filter Dialog-->
     <string name="done">Done</string>
     <string name="brand">Brand</string>
     <string name="price">Price</string>
     <string name="size">Size</string>
     <string name="filter">filter</string>
+    <string-array name="brandNames">
+        <item>Samsung</item>
+        <item>Xiaomi</item>
+        <item>Motorola</item>
+    </string-array>
+    <string-array name="priceNames">
+        <item>$1 - $300</item>
+        <item>$301- $500</item>
+        <item>$501 - $1000</item>
+        <item>$1001 - $9999</item>
+    </string-array>
+    <string-array name="sizeNames">
+        <item>3.5 to 4.49 inches</item>
+        <item>4.5 to 5.49 inches</item>
+        <item>5.5 to 6.49 inches</item>
+        <item>6.5 to 7.99 inches</item>
+    </string-array>
 
     <!--Details string-->
     <string name="shop">Shop</string>
     <string name="details">Details</string>
     <string name="features">Features</string>
-    <string name="select_color">Select color and capacity</string>
-    <string name="add_address">Add address</string>
+    <string name="selectColor">Select color and capacity</string>
+    <string name="addAddress">Add address</string>
     <string name="checkout">Checkout</string>
     <string name="delivery">Delivery</string>
     <string name="total">Total</string>
+    <string name="add_to_cart">Add to Cart</string>
 </resources>

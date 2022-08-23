@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="134dp"
+    android:background="@color/dark_blue">
+
+    <ImageView
+        android:layout_width="@dimen/image_cart"
+        android:layout_height="@dimen/image_cart"
+        android:layout_marginStart="33dp"
+        android:background="@drawable/bg_basket_sum"/>
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="33dp"
+        android:background="@drawable/bg_basket_sum" />
+
+    <View
+        android:layout_width="26dp"
+        android:layout_height="68dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/bg_basket_sum"
+        android:orientation="vertical"/>
+
+    <TextView
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="138dp"
+        android:background="@drawable/bg_basket_sum" />
+
+    <TextView
+        android:layout_width="160dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/bg_basket_sum" />
+
+</FrameLayout>

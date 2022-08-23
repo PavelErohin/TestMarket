@@ -4,7 +4,7 @@ import com.example.testmarket.model.base.ListItem
 
 data class PresentationModelCartScreen(
   val itemCartTop: ItemCartTop = ItemCartTop,
-  val bestItems: List<ListItem> = listOf(
+  val itemsCart: List<ListItem> = listOf(
     ProgressItemCart,
     ProgressItemCart
   ),

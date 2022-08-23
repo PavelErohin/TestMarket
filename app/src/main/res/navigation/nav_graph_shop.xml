@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_shop"
+    app:startDestination="@id/fragmentShop">
+
+    <fragment
+        android:id="@+id/fragmentShop"
+        android:name="com.example.testmarket.ui.main.FragmentShop"
+        android:label="fragment_shop"
+        tools:layout="@layout/fragment_shop" >
+        <action
+            android:id="@+id/action_fragmentShop_to_fragmentDetails"
+            app:destination="@id/fragmentDetails" />
+        <action
+            android:id="@+id/action_fragmentShop_to_dialogFilter"
+            app:destination="@id/dialogFilter" />
+        <action
+            android:id="@+id/action_fragmentShop_to_nav_graph_cart"
+            app:destination="@id/nav_graph_cart" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetails"
+        android:name="com.example.testmarket.ui.main.FragmentDetails"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_fragmentDetails_to_nav_graph_cart"
+            app:destination="@id/nav_graph_cart" />
+    </fragment>
+    <dialog
+        android:id="@+id/dialogFilter"
+        android:name="com.example.testmarket.ui.main.DialogFilter"
+        android:label="DialogFilter"
+        tools:layout="@layout/dialog_filter"/>
+    <include app:graph="@navigation/nav_graph_cart" />
+</navigation>

@@ -83,4 +83,9 @@ class DetailsViewModel(
     }
   }
 
+  fun addToFavorites() {
+    if (_data.value != null) {
+      _data.value = _data.value!!.copy(isFavorites = !(_data.value!!.isFavorites))
+    }
+  }
 }

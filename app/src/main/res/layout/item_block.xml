@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginStart="17dp"
-        android:text="@string/select_cate"
+        android:text="@string/selectCategory"
         android:textAppearance="@style/ParentText.25SP" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_gravity="end"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/see_more"
+        android:text="@string/seeMore"
         android:textAppearance="@style/ParentText.16SP.Orange"
         tools:ignore="TextContrastCheck" />
 

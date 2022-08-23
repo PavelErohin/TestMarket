@@ -8,19 +8,28 @@ import com.example.testmarket.R
 import com.example.testmarket.databinding.ItemCartBinding
 import com.example.testmarket.databinding.ItemCartBottomBinding
 import com.example.testmarket.databinding.ItemCartTopBinding
+import com.example.testmarket.databinding.ItemProgressCartBinding
 import com.example.testmarket.model.base.ListItem
 import com.example.testmarket.model.main.ItemCart
 import com.example.testmarket.model.main.ItemCartBottom
 import com.example.testmarket.model.main.ItemCartTop
+import com.example.testmarket.model.main.ProgressItemCart
 import com.example.testmarket.util.MyBaseUtil
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 
 object DelegateCartScreen {
 
-  fun topCartDelegate() =
+  fun topCartDelegate(backClick: (Boolean) -> Unit) =
     adapterDelegateViewBinding<ItemCartTop, ListItem, ItemCartTopBinding>(
       { inflater, container -> ItemCartTopBinding.inflate(inflater, container, false) }
+    ) {
+      binding.close.setOnClickListener { backClick.invoke(true) }
+    }
+
+  fun progressItemCartDelegate() =
+    adapterDelegateViewBinding<ProgressItemCart, ListItem, ItemProgressCartBinding>(
+      { inflater, container -> ItemProgressCartBinding.inflate(inflater, container, false) }
     ) {}
 
   fun bottomCartDelegate(/*checkoutClick: (itemCartBottom: ItemCartBottom) -> Unit*/) =
@@ -36,18 +45,22 @@ object DelegateCartScreen {
       }
     }
 
-  fun itemCartDelegate(plusClick: (itemCartBottom: ItemCart) -> Unit,
-                       minusClick: (itemCartBottom: ItemCart) -> Unit,
-                       deleteClick: (itemCartBottom: ItemCart) -> Unit) =
+  fun itemCartDelegate(
+    plusClickId: (itemCartBottomId: Int) -> Unit,
+    minusClickId: (itemCartBottomId: Int) -> Unit,
+    deleteClickId: (itemCartBottomId: Int) -> Unit,
+    imageClickId: (imageClickId: Int) -> Unit
+  ) =
     adapterDelegateViewBinding<ItemCart, ListItem, ItemCartBinding>(
       { inflater, container -> ItemCartBinding.inflate(inflater, container, false) }
     ) {
       bind {
         with(binding) {
           val resources = root.resources
-          plus.setOnClickListener { plusClick.invoke(item) }
-          minus.setOnClickListener { minusClick.invoke(item) }
-          delete.setOnClickListener { deleteClick.invoke(item) }
+          plus.setOnClickListener { plusClickId.invoke(item.id) }
+          minus.setOnClickListener { minusClickId.invoke(item.id) }
+          delete.setOnClickListener { deleteClickId.invoke(item.id) }
+          image.setOnClickListener { imageClickId.invoke(item.id) }
           if (item.images.isNotBlank()) {
             Glide.with(root).load(item.images)
               .override(
@@ -63,7 +76,7 @@ object DelegateCartScreen {
           }
           sum.text = item.sum.toString()
           title.text = item.title
-          price.text = MyBaseUtil().convertToPrice(item.price)
+          price.text = MyBaseUtil().convertToPrice(item.sum * item.price)
         }
       }
       onViewRecycled {

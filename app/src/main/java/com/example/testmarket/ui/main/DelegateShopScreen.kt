@@ -14,18 +14,25 @@ import com.example.testmarket.util.MyBaseUtil
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 
-object DelegateMainScreen {
+object DelegateShopScreen {
 
-  fun blockDelegate(selectCategory: (itemCategory: ItemCategory) -> Unit) =
+  fun blockDelegate(
+    titleSelectCategory: (titleSelectCategory: String) -> Unit,
+    hotBuyId: (id: Int) -> Unit,
+    productDetailsId: (id: Int) -> Unit
+  ) =
     adapterDelegateViewBinding<ItemBlockView, ListItem, ItemBlockBinding>(
       { inflater, container -> ItemBlockBinding.inflate(inflater, container, false) }
     ) {
-      val adapter = AdapterHorizontal(selectCategory)
+      val adapter = AdapterHorizontal(
+        titleSelectCategory, hotBuyId,
+        productDetailsId
+      )
       binding.blockRecyclerView.adapter = adapter
       bind {
         with(binding) {
           if (item.snapOn)
-            if (blockRecyclerView.getOnFlingListener() == null)
+            if (blockRecyclerView.onFlingListener == null)
               PagerSnapHelper().attachToRecyclerView(blockRecyclerView)
           TVTitle.text = item.title
           bMore.text = item.more
@@ -34,13 +41,13 @@ object DelegateMainScreen {
       }
     }
 
-  fun mapDelegate() =
+  fun mapDelegate(filterClick: (Boolean) -> Unit) =
     adapterDelegateViewBinding<ItemMap, ListItem, ItemMapBinding>(
       { inflater, container -> ItemMapBinding.inflate(inflater, container, false) }
     ) {
       bind {
         with(binding) {
-          filter.setOnClickListener { item.onClick.invoke() }
+          filter.setOnClickListener { filterClick.invoke(true)/*item.onClick.invoke()*/ }
         }
       }
     }
@@ -50,13 +57,13 @@ object DelegateMainScreen {
       { inflater, container -> ItemProgressCategoryBinding.inflate(inflater, container, false) }
     ) {}
 
-  fun categoryDelegate(selectCategory: (itemCategory: ItemCategory) -> Unit) =
+  fun categoryDelegate(titleSelectCategory: (titleSelectCategory: String) -> Unit) =
     adapterDelegateViewBinding<ItemCategory, ListItem, ItemCategoryBinding>(
       { inflater, container -> ItemCategoryBinding.inflate(inflater, container, false) }
     ) {
       bind {
         with(binding) {
-          viewShape.setOnClickListener { selectCategory.invoke(item) }
+          viewShape.setOnClickListener { titleSelectCategory.invoke(item.title) }
           viewShape.setImageResource(item.icon)
           viewShape.isSelected = item.selected
           title = item.title
@@ -75,16 +82,21 @@ object DelegateMainScreen {
       { inflater, container -> ItemProgressHotBinding.inflate(inflater, container, false) }
     ) {}
 
-  fun hotSalesDelegate() =
+  fun hotSalesDelegate(
+    bestBuyId: (id: Int) -> Unit,
+    productDetailsId: (id: Int) -> Unit
+  ) =
     adapterDelegateViewBinding<ItemHot, ListItem, ItemHotBinding>(
       { inflater, container -> ItemHotBinding.inflate(inflater, container, false) }
     ) {
       bind {
         with(binding) {
+          buttonBuyNow.setOnClickListener { bestBuyId.invoke(item.id) }
+          bestView.setOnClickListener { productDetailsId.invoke(item.id) }
           if (item.isNew == true) viewShapeNew.visibility = VISIBLE
           if (item.picture.isNotBlank()) {
             Glide.with(IVhot.context).load(item.picture).centerCrop()
-              .placeholder(R.drawable.bg_rectangle_dark_blue)
+              .placeholder(R.drawable.bg_bottom_menu)
               .error(R.drawable.ic_launcher_foreground)
               .into(IVhot)
           }
@@ -105,16 +117,16 @@ object DelegateMainScreen {
     ) {}
 
   fun bestSalesDelegate(
-    selectBest: (itemBest: ItemBest) -> Unit,
-    toDetailsClick: (id: Int) -> Unit
+    likeBestPressedId: (itemBest: Int) -> Unit,
+    productDetailsId: (id: Int) -> Unit
   ) =
     adapterDelegateViewBinding<ItemBest, ListItem, ItemBestSellerBinding>(
       { inflater, container -> ItemBestSellerBinding.inflate(inflater, container, false) }
     ) {
       bind {
         with(binding) {
-          BLike.setOnClickListener { selectBest.invoke(item) }
-          IVbest.setOnClickListener { toDetailsClick.invoke(item.id) }
+          BLike.setOnClickListener { likeBestPressedId.invoke(item.id) }
+          bestView.setOnClickListener { productDetailsId.invoke(item.id) }
           val resources = root.resources
           title = item.title
           if (item.picture.isNotBlank()) {
@@ -124,7 +136,7 @@ object DelegateMainScreen {
             ).transition(withCrossFade())
               .placeholder(R.drawable.ic_phone_select)
               .error(R.drawable.ic_launcher_foreground)
-              .into(IVbest)
+              .into(imageBest)
           }
           BLike.isSelected = item.isFavorites
           discountPrice = MyBaseUtil().convertToPrice(item.discountPrice)
@@ -136,7 +148,7 @@ object DelegateMainScreen {
 
       onViewRecycled {
         if ((binding.root.context as? Activity)?.isDestroyed?.not() == true)
-          Glide.with(binding.root).clear(binding.IVbest)
+          Glide.with(binding.root).clear(binding.imageBest)
       }
     }
 }

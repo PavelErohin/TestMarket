@@ -5,35 +5,35 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.testmarket.R
-import com.example.testmarket.core.network.Network
+import com.example.testmarket.core.network.NetworkHolder
 import com.example.testmarket.core.network.model.MainPageResponse
+import com.example.testmarket.domain.CartUseCase
 import com.example.testmarket.model.base.ListItem
 import com.example.testmarket.model.main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainScreenViewModel : ViewModel() {
+class ShopViewModel(
+  private val cartUseCase: CartUseCase,
+  private val network: NetworkHolder
+) : ViewModel() {
 
-  private val api = Network.createApi() //todo di
+  //todo вынести в презенташн модель?
 
-  //private val _dataBest = MutableLiveData<List<BestItem>>()
-  //val dataBest: LiveData<List<BestItem>> = _dataBest
-  //todo mediatorlivedata отдельные лайв даты для hot, best, cat?
-  //todo добавления в список best того же при листании вниз (типа пагинация)
   private val _data = MutableLiveData<List<ListItem>>()
   val data: LiveData<List<ListItem>> = _data
-  private val _filter = MutableLiveData<Unit>()
-  val filter: LiveData<Unit> = _filter
-  private var presentationModel = PresentationModelMainScreen()
+
+  private var presentationModel = PresentationModelShopScreen()
 
   init {
     viewModelScope.launch(Dispatchers.IO) {
-      val mainScreenData = api.getMainListData()
+      cartUseCase.getCartData()//todo вызов не там!?
+      val mainScreenData = network.api.getMainListData()
       _data.postValue(presentationModel.mapToDelegateList())
       delay(1000)
       presentationModel = presentationModel.copy(
-        itemMap = ItemMap { _filter.value = Unit },
+        itemMap = ItemMap,
         itemBlockCategory = ItemBlockView(
           title = "Select Category",
           more = "view all",
@@ -55,7 +55,7 @@ class MainScreenViewModel : ViewModel() {
     }
   }
 
-  private fun PresentationModelMainScreen.mapToDelegateList(): List<ListItem> {
+  private fun PresentationModelShopScreen.mapToDelegateList(): List<ListItem> {
     return listOf(
       itemMap,
       itemBlockCategory,
@@ -135,7 +135,7 @@ class MainScreenViewModel : ViewModel() {
     _data.postValue(presentationModel.mapToDelegateList())
   }
 
-  fun onBestPressed(id: Int) {
+  fun onLikeBestPressed(id: Int) {
     val listBest = presentationModel.bestItems.map { item ->
       val bestItem = item as? ItemBest
       if (bestItem != null) {
@@ -151,56 +151,3 @@ class MainScreenViewModel : ViewModel() {
     _data.postValue(presentationModel.mapToDelegateList())
   }
 }
-
-/*
-  private fun filtered(): FiltersSelected {
-    return FiltersSelected(null, null, null)
-  }
-
-  private suspend fun getMainItems(mainScreenData: MainPageResponse): List<ListItem> {
-    delay(3000)
-    val listItem: MutableList<ListItem> = mutableListOf(
-      MapItem { _filter.value = Unit },
-      BlockView(
-        title = "Select Category",
-        more = "view all",
-        horizontalList = loadCategory()
-      ),
-      SearchItem(),
-      BlockView(
-        title = "Hot sales",
-        horizontalList = loadListHotItem(mainScreenData),
-        snapOn = true
-      ),
-      BlockView(
-        title = "Best Seller",
-        horizontalList = null
-      )
-    )
-    return listItem
-  }
-
-  private fun getLoaders(): List<ListItem> {
-    return listOf(
-      MapItem({}),
-      BlockView(
-        title = "Select Category",
-        more = "view all",
-        horizontalList = IntRange(1, 5).map { ProgressCategoryItem }
-      ),
-      SearchItem(),
-      BlockView(
-        title = "Hot sales",
-        horizontalList = IntRange(1, 1).map { ProgressHotItem }
-      ),
-      BlockView(
-        title = "Best Seller",
-        horizontalList = null
-      ),
-      ProgressBestSellerItem,
-      ProgressBestSellerItem,
-      ProgressBestSellerItem,
-      ProgressBestSellerItem
-    )
-  }
-*/

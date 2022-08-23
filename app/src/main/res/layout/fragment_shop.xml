@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_gray"
-    tools:context=".ui.main.FragmentCart">
+    tools:context=".ui.main.FragmentShop">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCart"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:scrollIndicators="start"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:background="@color/dark_blue"
-        tools:listitem="@layout/item_cart" />
-</FrameLayout>
+        tools:listitem="@layout/item_block"
+        android:layout_marginBottom="@dimen/bottom_navigation_height"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

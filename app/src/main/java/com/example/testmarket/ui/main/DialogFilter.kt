@@ -3,6 +3,7 @@ package com.example.testmarket.ui.main
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.navigation.fragment.findNavController
 import com.example.testmarket.R
 import com.example.testmarket.databinding.DialogFilterBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -18,10 +19,10 @@ class DialogFilter() : BottomSheetDialogFragment() {
 
     with(binding) {
       close.setOnClickListener {
-        dismiss()
+        findNavController().popBackStack()
       }
       done.setOnClickListener {
-        dismiss()
+        findNavController().popBackStack()
       }
     }
     return dialog

@@ -1,4 +1,4 @@
-package com.example.testmarket.ui.base
+package com.example.testmarket.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -16,9 +16,8 @@ class MainActivity : AppCompatActivity() {
     val binding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(binding.root)
     val navHost =
-      supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
+      supportFragmentManager.findFragmentById(R.id.fragmentContainerApp) as NavHostFragment
     navController = navHost.navController
-    //NavigationUI.setupActionBarWithNavController(this, navController)
   }
 
   override fun onSupportNavigateUp(): Boolean {

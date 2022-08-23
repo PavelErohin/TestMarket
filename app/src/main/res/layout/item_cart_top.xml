@@ -22,7 +22,7 @@
             android:layout_height="23dp"
             android:layout_gravity="end|center"
             android:layout_marginEnd="92dp"
-            android:text="@string/add_address" />
+            android:text="@string/addAddress" />
 
         <ImageButton
             android:id="@+id/map"
@@ -39,10 +39,10 @@
         android:layout_marginStart="42dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/my_cart" />
+        android:text="@string/myCart" />
     <ImageView
         android:layout_marginTop="211dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@drawable/bg_bottom_menu"/>
 </FrameLayout>
