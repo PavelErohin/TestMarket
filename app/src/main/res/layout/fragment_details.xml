@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_gray"
     android:orientation="vertical"
-    tools:context=".ui.main.FragmentDetails">
+    tools:context=".featureDetails.presentation.ui.FragmentDetails">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,8 @@
                 android:layout_height="37dp"
                 android:layout_gravity="start"
                 android:layout_marginStart="40dp"
-                android:background="@drawable/ic_back" />
+                android:background="@drawable/ic_back"
+                android:contentDescription="@string/back" />
 
             <TextView
                 style="@style/ParentText.18SP"
@@ -41,7 +42,8 @@
                 android:layout_height="37dp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="42dp"
-                android:background="@drawable/ic_cart_details" />
+                android:background="@drawable/ic_cart_details"
+                android:contentDescription="@string/buyNow" />
         </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -84,7 +86,8 @@
                     android:layout_height="37dp"
                     android:layout_gravity="end"
                     android:layout_marginEnd="37dp"
-                    android:background="@drawable/sel_favourites_details" />
+                    android:background="@drawable/sel_favourites_details"
+                    android:contentDescription="@string/favourites" />
             </FrameLayout>
 
             <RatingBar
@@ -146,7 +149,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/camera"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Exynos 990" />
+                    tools:text="Exons 990" />
 
                 <TextView
                     android:id="@+id/camera"
@@ -235,7 +238,8 @@
                     android:layout_marginTop="27dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rvColor" />
+                    app:layout_constraintTop_toBottomOf="@id/rvColor"
+                    android:contentDescription="@string/buyNow" />
 
                 <TextView
                     style="@style/ParentText.20SP.White"

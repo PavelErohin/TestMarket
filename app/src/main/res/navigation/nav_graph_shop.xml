@@ -2,12 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph_shop"
+    android:id="@+id/navigation_shop"
     app:startDestination="@id/fragmentShop">
 
     <fragment
         android:id="@+id/fragmentShop"
-        android:name="com.example.testmarket.ui.main.FragmentShop"
+        android:name="com.example.testmarket.featureShop.presentation.ui.FragmentShop"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" >
         <action
@@ -18,20 +18,20 @@
             app:destination="@id/dialogFilter" />
         <action
             android:id="@+id/action_fragmentShop_to_nav_graph_cart"
-            app:destination="@id/nav_graph_cart" />
+            app:destination="@id/navigation_cart" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
-        android:name="com.example.testmarket.ui.main.FragmentDetails"
+        android:name="com.example.testmarket.featureDetails.presentation.ui.FragmentDetails"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <action
             android:id="@+id/action_fragmentDetails_to_nav_graph_cart"
-            app:destination="@id/nav_graph_cart" />
+            app:destination="@id/navigation_cart" />
     </fragment>
     <dialog
         android:id="@+id/dialogFilter"
-        android:name="com.example.testmarket.ui.main.DialogFilter"
+        android:name="com.example.testmarket.featureFilter.presentation.FragmentDialogFilter"
         android:label="DialogFilter"
         tools:layout="@layout/dialog_filter"/>
     <include app:graph="@navigation/nav_graph_cart" />

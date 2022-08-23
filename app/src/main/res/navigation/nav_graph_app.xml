@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentSplash"
-        android:name="com.example.testmarket.ui.main.FragmentSplash"
+        android:name="com.example.testmarket.featureSplash.FragmentSplash"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentTabs"
-        android:name="com.example.testmarket.ui.main.FragmentTabs"
+        android:name="com.example.testmarket.featureMenu.FragmentTabs"
         android:label="fragment_tabs"
         tools:layout="@layout/fragment_tabs" />
 </navigation>

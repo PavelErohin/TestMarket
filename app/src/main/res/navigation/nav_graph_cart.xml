@@ -2,12 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph_cart"
+    android:id="@+id/navigation_cart"
     app:startDestination="@id/fragmentCart">
 
     <fragment
         android:id="@+id/fragmentCart"
-        android:name="com.example.testmarket.ui.main.FragmentCart"
+        android:name="com.example.testmarket.featureCart.presentation.ui.FragmentCart"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
-        android:name="com.example.testmarket.ui.main.FragmentDetails"
+        android:name="com.example.testmarket.featureDetails.presentation.ui.FragmentDetails"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
 </navigation>

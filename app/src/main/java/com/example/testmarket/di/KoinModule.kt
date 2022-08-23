@@ -1,18 +1,18 @@
 package com.example.testmarket.di
 
 import com.example.testmarket.core.network.NetworkHolder
-import com.example.testmarket.domain.CartUseCase
-import com.example.testmarket.domain.DetailsUseCase
-import com.example.testmarket.viewmodel.CartViewModel
-import com.example.testmarket.viewmodel.DetailsViewModel
-import com.example.testmarket.viewmodel.ShopViewModel
-import com.example.testmarket.viewmodel.TabViewModel
+import com.example.testmarket.featureCart.domain.CartUseCase
+import com.example.testmarket.featureDetails.domain.UseCaseDetails
+import com.example.testmarket.featureCart.presentation.CartViewModel
+import com.example.testmarket.featureDetails.presentation.DetailsViewModel
+import com.example.testmarket.featureShop.presentation.viewmodel.ShopViewModel
+import com.example.testmarket.featureMenu.TabViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
   // single оставил пока как сингл
-  single { DetailsUseCase(get()) }
+  single { UseCaseDetails(get()) }
   single { CartUseCase(get()) }
   //Simple Presenter Factory
   //factory { MySimplePresenter(get()) }
