@@ -1,25 +1,17 @@
 package com.example.testmarket.featureDetails.presentation.ui
 
-import android.app.Activity
 import android.graphics.Color
 import android.view.View
 import androidx.core.graphics.toColorInt
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.testmarket.R
+import com.example.testmarket.core.model.ListItem
 import com.example.testmarket.databinding.ItemCapacityBinding
 import com.example.testmarket.databinding.ItemColorBinding
-import com.example.testmarket.databinding.ItemDetailsGalleryBinding
-import com.example.testmarket.core.model.ListItem
 import com.example.testmarket.featureDetails.domain.models.ItemCapacity
 import com.example.testmarket.featureDetails.domain.models.ItemColor
-import com.example.testmarket.featureDetails.domain.models.ItemGallery
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 object DelegateDetailsScreen {
-  fun detailsGalleryDelegate() =
+  /*fun detailsGalleryDelegate() =
     adapterDelegateViewBinding<ItemGallery, ListItem, ItemDetailsGalleryBinding>(
       { inflater, container -> ItemDetailsGalleryBinding.inflate(inflater, container, false) }
     ) {
@@ -46,7 +38,7 @@ object DelegateDetailsScreen {
         if ((binding.root.context as? Activity)?.isDestroyed?.not() == true)
           Glide.with(binding.root).clear(binding.IVGallery)
       }
-    }
+    }*/
 
   fun colorDelegate(selectColor: (itemColor: ItemColor) -> Unit) =
     adapterDelegateViewBinding<ItemColor, ListItem, ItemColorBinding>(

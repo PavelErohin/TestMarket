@@ -4,16 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testmarket.core.network.model.DetailsPageResponse
 import com.example.testmarket.core.model.ListItem
+import com.example.testmarket.core.network.model.DetailsPageResponse
+import com.example.testmarket.core.util.MyUtil
+import com.example.testmarket.featureDetails.domain.UseCaseDetails
 import com.example.testmarket.featureDetails.domain.models.ItemCapacity
 import com.example.testmarket.featureDetails.domain.models.ItemColor
 import com.example.testmarket.featureDetails.domain.models.ItemGallery
 import com.example.testmarket.featureDetails.domain.models.ScreenDataDetails
-import com.example.testmarket.core.util.MyUtil
-import com.example.testmarket.featureDetails.domain.UseCaseDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
 class DetailsViewModel(
   private val useCaseDetails: UseCaseDetails
@@ -60,6 +61,7 @@ class DetailsViewModel(
       cpu = detailsPageResponse.CPU,
       camera = detailsPageResponse.camera,
       id = detailsPageResponse.id,
+      images = detailsPageResponse.images.map { CarouselItem(imageUrl = it) },
       isFavorites = detailsPageResponse.isFavorites,
       price = MyUtil().convertToPrice(detailsPageResponse.price),
       rating = detailsPageResponse.rating,

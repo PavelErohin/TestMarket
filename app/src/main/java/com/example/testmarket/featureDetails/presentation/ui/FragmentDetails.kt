@@ -1,14 +1,21 @@
 package com.example.testmarket.featureDetails.presentation.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.viewbinding.ViewBinding
 import com.example.testmarket.R
-import com.example.testmarket.databinding.FragmentDetailsBinding
 import com.example.testmarket.core.ui.viewBinding
+import com.example.testmarket.databinding.FragmentDetailsBinding
+import com.example.testmarket.databinding.ItemDetailsGalleryBinding
 import com.example.testmarket.featureDetails.presentation.DetailsViewModel
+import org.imaginativeworld.whynotimagecarousel.listener.CarouselListener
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
+import org.imaginativeworld.whynotimagecarousel.utils.setImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -16,19 +23,42 @@ class FragmentDetails : Fragment(R.layout.fragment_details) {
 
   private val binding by viewBinding { FragmentDetailsBinding.bind(it) }
   private val viewModel by viewModel<DetailsViewModel>()
-  private val galleryAdapter = GalleryAdapter()
+
   private val colorAdapter =
     ColorAdapter { colorItem -> viewModel.onColorPressed(colorItem.itemId) }
   private val capacityAdapter =
     CapacityAdapter { capacityItem -> viewModel.onCapacityPressed(capacityItem.itemId) }
 
-
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     with(binding) {
-      rvGallery.adapter = galleryAdapter
-      if (rvGallery.getOnFlingListener() == null)
-        PagerSnapHelper().attachToRecyclerView(rvGallery)
+      carousel.registerLifecycle(lifecycle)
+
+      carousel.carouselListener = object : CarouselListener {
+
+        override fun onCreateViewHolder(
+          layoutInflater: LayoutInflater, parent: ViewGroup
+        ): ViewBinding {
+          return ItemDetailsGalleryBinding.inflate(layoutInflater, parent, false)
+        }
+
+        override fun onBindViewHolder(
+          binding: ViewBinding, item: CarouselItem, position: Int
+        ) {
+          val currentBinding = binding as ItemDetailsGalleryBinding
+          currentBinding.imageView.apply {
+            scaleType = ImageView.ScaleType.CENTER_CROP
+            setImage(item, R.drawable.bg_dialog_spinner)
+          }
+        }
+      }
+
+      /*     carousel.setData(
+             listOf(
+               CarouselItem(imageUrl = "https://avatars.mds.yandex.net/get-mpic/5235334/img_id5575010630545284324.png/orig"),
+               CarouselItem(imageUrl = "https://www.manualspdf.ru/thumbs/products/l/1260237-samsung-galaxy-note-20-ultra.jpg")
+             )
+           )*/
 
       back.setOnClickListener { findNavController().popBackStack() }
       addToCartTop.setOnClickListener { addToCart() }
@@ -38,9 +68,6 @@ class FragmentDetails : Fragment(R.layout.fragment_details) {
       rvColor.adapter = colorAdapter
       rvCapacity.adapter = capacityAdapter
 
-      viewModel.dataGallery.observe(viewLifecycleOwner) {
-        galleryAdapter.items = it //todo сделать виджет галереи
-      }
       viewModel.dataColor.observe(viewLifecycleOwner) {
         colorAdapter.items = it
       }
@@ -48,6 +75,7 @@ class FragmentDetails : Fragment(R.layout.fragment_details) {
         capacityAdapter.items = it
       }
       viewModel.dataDetails.observe(viewLifecycleOwner) {
+        carousel.setData(it.images)
         title.text = it.title
         cpu.text = it.cpu
         camera.text = it.camera

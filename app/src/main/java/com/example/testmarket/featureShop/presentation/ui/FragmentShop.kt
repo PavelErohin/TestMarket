@@ -21,7 +21,7 @@ class FragmentShop : Fragment(R.layout.fragment_shop) {
       { hotBuyId -> goBuyHot(hotBuyId) },
       { productDetailsId -> goToProductDetails(productDetailsId) },
       { likeBestPressedId -> viewModel.onLikeBestPressed(likeBestPressedId) },
-      { filterClick -> showFilterDialog() }
+      { _ -> showFilterDialog() }
     )
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,6 +47,7 @@ class FragmentShop : Fragment(R.layout.fragment_shop) {
   }
 
   private fun goToProductDetails(id: Int) {
+    val int = id
     findNavController().navigate(R.id.action_fragmentShop_to_fragmentDetails)
   }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/item_details_width"
+    android:layout_height="@dimen/item_details_height"
+    tools:cardBackgroundColor="@color/black">
+    <ImageView
+        android:id="@+id/IVGallery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/orange"
+        android:contentDescription="@string/mobile" />
+</FrameLayout>

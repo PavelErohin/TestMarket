@@ -46,18 +46,26 @@
                 android:contentDescription="@string/buyNow" />
         </FrameLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvGallery"
+        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+            android:layout_marginTop="37dp"
+            android:id="@+id/carousel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal"
-            android:scrollIndicators="start"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_details_gallery" />
+            android:layout_height="335dp"
+            android:translationZ="8dp"
+            app:autoPlay="true"
+            app:autoPlayDelay="4000"
+            app:carouselGravity="CENTER"
+            app:carouselType="SHOWCASE"
+            app:imageScaleType="centerCrop"
+            app:scaleOnScroll="true"
+            app:scalingFactor=".17"
+            app:showBottomShadow="false"
+            app:showCaption="false"
+            app:showIndicator="false"
+            app:showNavigationButtons="false"
+            app:showTopShadow="false"
+            tools:background="@color/dark_blue"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -236,10 +244,10 @@
                     android:id="@+id/addToCartBottom"
                     style="@style/BigOrangeButton"
                     android:layout_marginTop="27dp"
+                    android:contentDescription="@string/buyNow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rvColor"
-                    android:contentDescription="@string/buyNow" />
+                    app:layout_constraintTop_toBottomOf="@id/rvColor" />
 
                 <TextView
                     style="@style/ParentText.20SP.White"

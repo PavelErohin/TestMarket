@@ -15,14 +15,14 @@ class ColorAdapter(selectColor: (itemColor: ItemColor) -> Unit) :
   }
 }
 
-class GalleryAdapter : AsyncListDifferDelegationAdapter<ListItem>(
+/*class GalleryAdapter : AsyncListDifferDelegationAdapter<ListItem>(
   BaseDiffUtilItemCallBack()
 ) {
   init {
     delegatesManager
       .addDelegate(DelegateDetailsScreen.detailsGalleryDelegate())
   }
-}
+}*/
 
 class CapacityAdapter(selectCapacity: (itemCapacity: ItemCapacity) -> Unit) :
   AsyncListDifferDelegationAdapter<ListItem>(
