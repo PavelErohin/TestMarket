@@ -9,7 +9,7 @@
             type="String" />
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="@dimen/item_category_width"
         android:layout_height="@dimen/item_category_height"
         android:layout_marginStart="@dimen/item_category_marginStart"
@@ -30,11 +30,11 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_gravity="bottom"
             android:gravity="center"
             android:lines="1"
             android:text="@{title}"
             android:textAppearance="@style/ParentText.12SP"
             tools:text="Category" />
-    </LinearLayout>
+    </FrameLayout>
 </layout>
