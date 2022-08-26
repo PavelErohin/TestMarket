@@ -1,10 +1,11 @@
 package com.example.testmarket
 
 import android.os.Bundle
+import android.os.Handler
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.testmarket.R
 import com.example.testmarket.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,5 +23,16 @@ class MainActivity : AppCompatActivity() {
 
   override fun onSupportNavigateUp(): Boolean {
     return navController.navigateUp()
+  }
+
+  private var doubleBackToExitPressedOnce = false
+  override fun onBackPressed() {
+    if (doubleBackToExitPressedOnce) {
+      super.onBackPressed()
+    } else {
+      doubleBackToExitPressedOnce = true
+      Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show()
+      Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+    }
   }
 }

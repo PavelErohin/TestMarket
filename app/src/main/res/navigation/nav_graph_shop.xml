@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentShop"
-        android:name="com.example.testmarket.featureShop.presentation.ui.FragmentShop"
+        android:name="com.example.testmarket.feature.shop.presentation.ui.FragmentShop"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
-        android:name="com.example.testmarket.featureDetails.presentation.ui.FragmentDetails"
+        android:name="com.example.testmarket.feature.details.presentation.ui.FragmentDetails"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <dialog
         android:id="@+id/dialogFilter"
-        android:name="com.example.testmarket.featureFilter.presentation.FragmentDialogFilter"
+        android:name="com.example.testmarket.feature.shop.presentation.ui.FragmentDialogFilter"
         android:label="DialogFilter"
         tools:layout="@layout/dialog_filter"/>
     <include app:graph="@navigation/nav_graph_cart" />

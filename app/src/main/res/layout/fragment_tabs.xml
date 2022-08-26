@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_gray"
-    tools:context=".featureMenu.FragmentTabs">
+    tools:context=".feature.menu.presentation.FragmentTabs">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/tabsContainer"
